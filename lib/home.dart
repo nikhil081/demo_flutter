@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
 }
 
 class _home extends State<Home> {
-  bool visibilityTag = true;
+  bool visibilityTag = false;
 
   void _changed(bool t) {
     setState(() {
@@ -19,30 +19,47 @@ class _home extends State<Home> {
     });
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var width = size.width;
+    var height = size.height;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Row(
+
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
               children: <Widget>[
+
                 new Container(
+                  height: height*0.08,
                   width: width / 2,
                   child: RaisedButton(
+                    color: visibilityTag?Color(0xff808B96):Color(0xffD5D8DC),
                     onPressed: () {
                       _changed(true);
+
                     },
                     child: Text("hey"),
                   ),
                 ),
                 new Container(
+                  height: height*0.08,
+
                   width: width / 2,
+
                   child: RaisedButton(
+                    color: visibilityTag?Color(0xffD5D8DC):Color(0xff808B96),
+
+
                     onPressed: () {
+
                       _changed(false);
                     },
                     child: Text("yoo"),
@@ -50,6 +67,10 @@ class _home extends State<Home> {
                 ),
               ],
             ),
+           new Container(
+             color: Colors.black,
+             height: height*0.002,
+           ),
             visibilityTag
                 ? new Container(
                     child: new Counter(),
@@ -70,3 +91,6 @@ class _home extends State<Home> {
     );
   }
 }
+
+
+
